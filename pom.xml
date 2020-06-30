@@ -1,0 +1,210 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>org.wso2</groupId>
+		<artifactId>wso2</artifactId>
+		<version>1</version>
+	</parent>
+
+
+	<groupId>org.wso2.carbon.identity.application.authenticator.social.naver</groupId>
+	<artifactId>identity-outbound-auth-naver</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	<name>identity-outbound-auth-naver</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+	
+		<repository>
+			<id>wso2-nexus</id>
+			<name>WSO2 internal Repository</name>
+			<url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
+
+		<repository>
+			<id>wso2.releases</id>
+			<name>WSO2 internal Repository</name>
+			<url>https://maven.wso2.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
+
+		<repository>
+			<id>wso2.snapshots</id>
+			<name>WSO2 Snapshot Repository</name>
+			<url>https://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+		
+	</repositories>
+
+	<pluginRepositories>
+	
+		<pluginRepository>
+			<id>wso2.releases</id>
+			<name>WSO2 internal Repository</name>
+			<url>http://maven.wso2.org/nexus/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>wso2.snapshots</id>
+			<name>WSO2 Snapshot Repository</name>
+			<url>http://maven.wso2.org/nexus/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>wso2-nexus</id>
+			<name>WSO2 internal Repository</name>
+			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</pluginRepository>
+		
+	</pluginRepositories>
+
+
+	<dependencies>
+<!-- 
+		<dependency>
+			<groupId>org.wso2.carbon.identity.framework</groupId>
+			<artifactId>org.wso2.carbon.identity.application.common</artifactId>
+			<version>5.17.5</version>
+		</dependency> -->
+
+		<dependency>
+			<groupId>org.wso2.carbon.identity.framework</groupId>
+			<artifactId>org.wso2.carbon.identity.application.authentication.framework</artifactId>
+			<version>5.17.5</version>
+		</dependency>
+
+<!-- 		<dependency>
+			<groupId>org.wso2.orbit.org.apache.oltu.oauth2</groupId>
+			<artifactId>oltu</artifactId>
+			<version>1.0.0.wso2v3</version>
+		</dependency>
+ -->
+		<dependency>
+			<groupId>org.wso2.carbon</groupId>
+			<artifactId>org.wso2.carbon.logging</artifactId>
+			<version>4.4.37</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.wso2.carbon</groupId>
+			<artifactId>org.wso2.carbon.ui</artifactId>
+			<version>4.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+      <dependency>
+    <groupId>org.eclipse.osgi</groupId>
+    <artifactId>org.eclipse.osgi</artifactId>
+    <version>3.7.1</version>
+</dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.eclipse.osgi/org.eclipse.osgi.services -->
+<dependency>
+    <groupId>org.eclipse.osgi</groupId>
+    <artifactId>org.eclipse.osgi.services</artifactId>
+    <version>3.2.100.v20100503</version>
+</dependency>
+        
+   
+
+
+	</dependencies>
+
+	<build>
+	
+		<plugins>
+		
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-scr-plugin</artifactId>
+				<version>1.7.4</version>
+				<executions>
+					<execution>
+						<id>generate-scr-scrdescriptor</id>
+						<goals>
+							<goal>scr</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>4.2.1</version>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${project.artifactId}</Bundle-Name>
+						<Private-Package>
+							org.wso2.carbon.identity.application.authenticator.social.naver.internal
+						</Private-Package>
+						<!-- <Bundle-Activator> org.wso2.carbon.identity.application.authenticator.social.naver.internal.NaverAuthenticatorServiceComponent 
+							</Bundle-Activator> -->
+						<Import-Package>
+							org.osgi.framework,
+							 org.osgi.service.component,
+							 javax.servlet.http,
+							org.apache.commons.logging.*,
+							org.wso2.carbon.identity.application.authentication.framework.*,
+							*;resolution:=optional
+						</Import-Package>
+						<Export-Package>
+							org.wso2.carbon.identity.application.authenticator.social.naver.*
+						</Export-Package>
+						<DynamicImport-Package>*</DynamicImport-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+
+	</build>
+
+</project>

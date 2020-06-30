@@ -1,0 +1,39 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1593499107311
+Build-Jdk: 1.8.0_201
+Built-By: krishni
+Bundle-Description: WSO2 is an open source application development softw
+ are company focused on providing service-oriented        architecture s
+ olutions for professional developers.
+Bundle-DocURL: http://www.wso2.org/
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: identity-outbound-auth-naver
+Bundle-SymbolicName: org.wso2.carbon.identity.application.authenticator.
+ social.naver.identity-outbound-auth-naver
+Bundle-Vendor: WSO2
+Bundle-Version: 0.0.1.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+DynamicImport-Package: *
+Export-Package: org.wso2.carbon.identity.application.authenticator.socia
+ l.naver;uses:="javax.servlet.http,org.wso2.carbon.identity.application.
+ authentication.framework,org.wso2.carbon.identity.application.authentic
+ ation.framework.context,org.wso2.carbon.identity.application.authentica
+ tion.framework.exception";version="0.0.1",org.wso2.carbon.identity.appl
+ ication.authenticator.social.naver.internal;uses:="org.osgi.service.com
+ ponent";version="0.0.1"
+Import-Package: org.osgi.framework;version="[1.8,2)",org.osgi.service.co
+ mponent;version="[1.3,2)",javax.servlet.http;version="[2.6,3)",org.apac
+ he.commons.logging;version="[1.2,2)",org.wso2.carbon.identity.applicati
+ on.authentication.framework;version="[5.17,6)",org.wso2.carbon.identity
+ .application.authentication.framework.context;version="[5.17,6)",org.ws
+ o2.carbon.identity.application.authentication.framework.exception;versi
+ on="[5.17,6)",org.wso2.carbon.identity.application.authenticator.social
+ .naver;resolution:=optional,org.wso2.carbon.identity.application.authen
+ ticator.social.naver.internal;resolution:=optional
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.compone
+ nt)(version>=1.3.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osgi.ee=Ja
+ vaSE)(version=1.6))"
+Service-Component: OSGI-INF/org.wso2.carbon.identity.application.authent
+ icator.social.naver.internal.NaverAuthenticatorServiceComponent.xml
+Tool: Bnd-4.2.0.201903051501
